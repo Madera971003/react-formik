@@ -2,7 +2,7 @@
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #374342;
   width: 100%;
   min-height: 7rem;
@@ -10,6 +10,18 @@
 
 .header-container span {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#menu {
+  padding: 2rem;
+}
+
+#menu a {
+  color: white;
+  padding-right: 5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
   font-weight: bold;
 }

@@ -1,14 +1,18 @@
-import React from 'react'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
-import LeftNav from '../components/LeftNav/LeftNav'
+import React from 'react';
+import Header from '../components/Header/Header';
+import { FormularioBasico } from '../components/Formularios/FormularioBasico/Formulario';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <LeftNav />
-      <Footer />
-    </>
+      <div>
+        <Routes>
+          <Route path='/formulario-basico' element={<FormularioBasico />}></Route>
+          <Route path='/formulario-estudiante'></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }

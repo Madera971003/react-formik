@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validateName, validateEmail, validateLastName } from '../../../utils/validators';
 import './styles.css'
 
-const Formulario = () => {
+export const FormularioBasico = () => {
 
 	const initialState = {
 		name: '',
@@ -21,7 +21,7 @@ const Formulario = () => {
 	}
 
 	return (
-		<>
+		<div className='formulario-basico-container'>
 			<Formik
 				initialValues={initialState}
 				onSubmit={handleSubmit}
@@ -96,8 +96,6 @@ const Formulario = () => {
 					</Form>
 				)}
 			</Formik>
-		</>
+		</div>
 	);
 }
-
-export default Formulario;
