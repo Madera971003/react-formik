@@ -1,8 +1,14 @@
 import React from 'react'
-import Formulario from '../components/Formulario'
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
+import LeftNav from '../components/LeftNav/LeftNav'
 
 export default function App() {
   return (
-    <Formulario />
+    <>
+      <Header />
+      <LeftNav />
+      <Footer />
+    </>
   )
 }

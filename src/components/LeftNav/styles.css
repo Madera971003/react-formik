@@ -1,0 +1,13 @@
+
+.nav-container {
+  display: flex;
+  background-color: #899B9F;
+  min-width: 10%;
+  max-width: 18%;
+  height: 65rem;
+}
+
+.nav-container div {
+  display: flex;
+  align-content: stretch;
+}

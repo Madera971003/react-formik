@@ -1,0 +1,15 @@
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #374342;
+  width: 100%;
+  min-height: 7rem;
+}
+
+.header-container span {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}

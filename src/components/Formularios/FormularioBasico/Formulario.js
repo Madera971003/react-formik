@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { validateName, validateEmail, validateLastName } from '../utils/validators';
+import { validateName, validateEmail, validateLastName } from '../../../utils/validators';
+import './styles.css'
 
 const Formulario = () => {
 
