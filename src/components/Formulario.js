@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { validateName, validateEmail } from './validators';
+import { validateName, validateEmail, validateLastName } from '../utils/validators';
 
 const Formulario = () => {
+
+	const initialState = {
+		name: '',
+		lastName: '',
+		email: '',
+	};
+
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
 	const handleSubmit = (valores, { resetForm }) => {
@@ -15,48 +22,50 @@ const Formulario = () => {
 	return (
 		<>
 			<Formik
-				initialValues={{
-					nombre: '',
-					correo: ''
-				}}
+				initialValues={initialState}
 				onSubmit={handleSubmit}
 			>
 				{({ errors, touched }) => (
 					<Form className="formulario">
 						<div>
-							<label htmlFor="nombre">Nombre</label>
+							<label htmlFor="name">Nombre *</label>
 							<Field
 								type="text"
-								id="nombre"
-								name="nombre"
+								id="name"
+								name="name"
 								placeholder="John Doe"
-								validate={(nombre) => validateName(nombre)}
+								validate={(name) => validateName(name)}
+								required
 							/>
-							 {errors.nombre && touched.nombre && <ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />}
+							 {errors.name && touched.name && <ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />}
 						</div>
 						<div>
-							<label htmlFor="correo">Correo</label>
+							<label htmlFor="lastName">Apellidos</label>
 							<Field
 								type="text"
-								id="correo"
-								name="correo"
+								id="lastName"
+								name="lastName"
+								placeholder="Hdz"
+								validate={(lastName) => validateLastName(lastName)}
+							/>
+							 {errors.lastName && touched.lastName && <ErrorMessage name="lastName" component={() => (<div className="error">{errors.lastName}</div>)} />}
+						</div>
+						<div>
+							<label htmlFor="email">Correo *</label>
+							<Field
+								type="text"
+								id="email"
+								name="email"
 								placeholder="correo@correo.com"
 								validate={(email) => validateEmail(email)}
+								required
 							/>
-							{errors.correo && touched.correo && <ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />}
+							{errors.email && touched.email && <ErrorMessage name="email" component={() => (<div className="error">{errors.email}</div>)} />}
 						</div>
-
 						<div>
 							<Field
 								name="pais"
 								as="select"
-								// onChange={e => {
-								// 	console.log('e', e)
-								// 	const indexOption = e.target.selectedIndex;
-								// 	console.log('indexOption', indexOption);
-								// 	const valueOption = e.target[indexOption].getAttribute('value');
-								// 	console.log('valueOption', valueOption);
-								// }}
 							>
 								<option value="mexico">Mexico</option>
 								<option value="España">España</option>
@@ -85,41 +94,6 @@ const Formulario = () => {
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 					</Form>
 				)}
-
-
-				{/* {( {values, errors, touched, handleSubmit, handleChange, handleBlur} ) => (
-					<form className="formulario" onSubmit={handleSubmit}>
-						<div>
-							<label htmlFor="nombre">Nombre</label>
-							<input 
-								type="text" 
-								id="nombre" 
-								name="nombre" 
-								placeholder="John Doe" 
-								value={values.nombre}
-								onChange={handleChange}
-								onBlur={handleBlur}
-							/>
-
-							{touched.nombre && errors.nombre && <div className="error">{errors.nombre}</div>}
-						</div>
-						<div>
-							<label htmlFor="correo">Correo</label>
-							<input 
-								type="text" 
-								id="correo" 
-								name="correo" 
-								placeholder="correo@correo.com" 
-								value={values.correo}
-								onChange={handleChange}
-								onBlur={handleBlur}
-							/>
-							{touched.correo && errors.correo && <div className="error">{errors.correo}</div>}
-						</div>
-						<button type="submit">Enviar</button>
-						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
-					</form>
-				)} */}
 			</Formik>
 		</>
 	);
