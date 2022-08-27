@@ -1,6 +1,6 @@
 
 .formulario {
-	width: 70rem;
+	width: 70%;
 	margin-top: 50px;
 	background: #fff;
 	border-radius: 5px;
@@ -76,3 +76,13 @@
 .formulario input[type="radio"] {
 	width: auto;
 }
+
+
+/* Para eliminar las flechas del input number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

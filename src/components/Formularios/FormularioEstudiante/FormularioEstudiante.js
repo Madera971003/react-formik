@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { validateName, validateEmail, validateLastName } from '../../../utils/validators';
-import './styles.css'
+import { validateName, validateEmail, validateRegistration } from '../../../utils/validators';
+import '../styles.css'
 
-export const FormularioBasico = () => {
+export const FormularioEstudiante = () => {
 
 	const initialState = {
 		name: '',
-		lastName: '',
+		registration: '',
 		email: '',
+		mensaje: '',
 	};
 
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
@@ -41,15 +42,16 @@ export const FormularioBasico = () => {
 							 {errors.name && touched.name && <ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />}
 						</div>
 						<div>
-							<label htmlFor="lastName">Apellidos</label>
+							<label htmlFor="registration">Matrícula *</label>
 							<Field
-								type="text"
-								id="lastName"
-								name="lastName"
-								placeholder="Hdz"
-								validate={(lastName) => validateLastName(lastName)}
+								type="number"
+								id="registration"
+								name="registration"
+								placeholder="2015000001"
+								validate={(registration) => validateRegistration(registration)}
+								required
 							/>
-							 {errors.lastName && touched.lastName && <ErrorMessage name="lastName" component={() => (<div className="error">{errors.lastName}</div>)} />}
+							 {errors.registration && <ErrorMessage name="registration" component={() => (<div className="error">{errors.registration}</div>)} />}
 						</div>
 						<div>
 							<label htmlFor="email">Correo *</label>
@@ -63,21 +65,7 @@ export const FormularioBasico = () => {
 							/>
 							{errors.email && touched.email && <ErrorMessage name="email" component={() => (<div className="error">{errors.email}</div>)} />}
 						</div>
-						<div>
-							<Field
-								name="pais"
-								as="select"
-							>
-								<option value="mexico">Mexico</option>
-								<option value="España">España</option>
-								<option value="Argentina">Argentina</option>
-								<option value="Honduras">Honduras</option>
-								<option value="Jamaica">Jamaica</option>
-								<option value="Perú">Perú</option>
-								<option value="Venezuela">Venezuela</option>
-							</Field>
-						</div>
-
+						
 						<div>
 							<label>
 								<Field type="radio" name="sexo" value="hombre" /> Hombre
